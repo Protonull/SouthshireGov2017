@@ -1,0 +1,61 @@
+# Site settings
+title: Southshire, Yoahtl
+email: protonull@protonmail.com
+location: CivClassics
+github_url: //github.com/Protonull
+github_username: Protonull
+repository: Protonull/SouthshireGov2017
+description: "They work for you."
+favicon: favicon.png
+url: "https://SouthshireGov2017.protonull.uk"
+timezone: Etc/UTC
+
+# https://github.com/DONGChuan/Yummy-Jekyll
+remote_theme: DONGChuan/Yummy-Jekyll
+
+# Gem
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "<!--more-->"
+exclude:
+ - _pdfs/
+ - Gemfile
+ - Gemfile.lock
+ # Fix invalid date issue https://github.com/jekyll/jekyll/issues/2938
+ - vendor
+
+source:      .
+destination: ./_site
+
+permalink: /:year-:month-:day/:title
+
+quiet: true
+defaults:
+- scope:
+    path: ''
+  values:
+    layout: default
+    footer: true
+
+# Pagination
+paginate: 10
+paginate_path: "page:num"
+
+# Sidebar to show popular repo
+side_bar_repo_limit: 5
+
+# Navigation
+navigation:
+  - href: https://discord.gg/sef4wt4
+    label: Discord
+  - href: /history/
+    label: History
+  - href: /government/
+    label: Government

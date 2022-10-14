@@ -1,0 +1,38 @@
+/** Overwritting remote theme (https://github.com/DONGChuan/Yummy-Jekyll/blob/master/assets/css/index.css) */
+
+.site-header{
+    color: #fff;
+    background: #0F3417;
+}
+
+.site-header #site-header-brand {
+    color: #fff;
+}
+
+.site-header .site-header-nav-item {
+    color: #f2f2f2;
+}
+
+.site-header a:hover {
+    color: #fff;
+}
+
+section.jumbotron {
+    background-image: url("/assets/images/cover.png");
+    background-position: 0% 0%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.site-header.site-header-nav-scrolled a {
+    color: #0F3417;
+}
+
+.site-header.site-header-nav-scrolled #site-header-brand {
+    color: #0F3417 !important;
+}
+
+.site-header.site-header-nav-scrolled a:hover {
+    color: #4183c4;
+}

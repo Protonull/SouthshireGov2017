@@ -1,0 +1,33 @@
+---
+layout: page
+title: Government
+subtitle: <span class="mega-octicon octicon-clippy"></span>&nbsp;&nbsp; Take note of anything new!
+css: ["blog-page.css"]
+legislation:
+  - name: Yoahtl
+    slug: yoahtl
+  - name: Parliament
+    slug: parliament
+  - name: Ministry For Citizenship
+    slug: ministryforcitizenship
+---
+<div class="row">
+    <!-- Post List -->
+    <div class="col-md-12">
+        {% for item in page.legislation %}
+        <h2>{{item.name}}</h2>
+        {% assign location = "/government/" | append: item.slug | append: "/" %}
+        {% for item in site.static_files %}
+        {% if item.path contains location %}
+        <a href="/pdf#{{item.path | remove_first: '/' | remove: '.pdf'}}" target="_blank">{{ item.path | remove: location }}</a><br/>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        // Enable bootstrap tooltip
+        $("body").tooltip({ selector: "[data-toggle=tooltip]" });
+    });
+</script>
