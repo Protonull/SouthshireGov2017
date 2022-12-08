@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.png">
+
+    <title>GeoPattern</title>
+    <meta name="description"
+          content="They work for you.">
+
+    <link rel="canonical" href="https://SouthshireGov2017.protonull.uk/pages/Protonull/SouthshireGov2017/bower_components/geopattern/">
+    <link rel="alternate" type="application/rss+xml" title="Southshire, Yoahtl" href="https://SouthshireGov2017.protonull.uk/pages/Protonull/SouthshireGov2017/feed.xml">
+
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Third-Party CSS -->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/octicons/octicons/octicons.css">
+    <link rel="stylesheet" href="/bower_components/hover/css/hover-min.css">
+    <link rel="stylesheet" href="/bower_components/primer-markdown/dist/user-content.min.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/assets/css/common.css">
+
+    <!-- CSS set in page -->
+    
+
+    <!-- CSS set in layout -->
+    
+
+    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</head>
+
+
+    <body>
+
+    <!-- Overwritting remote theme (https://github.com/DONGChuan/Yummy-Jekyll/blob/master/_includes/header.html) -->
+<header class="site-header">
+    <div class="container">
+        <a id="site-header-brand" href="/" title="Southshire, Yoahtl">
+            Southshire, Yoahtl
+        </a>
+        <nav class="site-header-nav" role="navigation">
+            
+            <a href="https://discord.gg/sef4wt4"
+               class="site-header-nav-item"
+               target=""
+               title="Discord">
+                Discord
+            </a>
+            
+            <a href="/history/"
+               class="site-header-nav-item"
+               target=""
+               title="History">
+                History
+            </a>
+            
+            <a href="/government/"
+               class="site-header-nav-item"
+               target=""
+               title="Government">
+                Government
+            </a>
+            
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <h1 id="geopattern">GeoPattern</h1>
+
+<p>This is a JavaScript port of <a href="https://github.com/jasonlong/geo_pattern">jasonlong/geo_pattern</a> with a <a href="http://btmills.github.io/geopattern/geopattern.html">live preview page</a> and is derived from the background generator originally used for <a href="http://guides.github.com/">GitHub Guides</a>.</p>
+
+<h2 id="usage">Usage</h2>
+
+<h3 id="web">Web</h3>
+
+<p>Include the <a href="/pages/Protonull/SouthshireGov2017/bower_components/geopattern/js/geopattern.min.js">minified script</a>. jQuery is optional.</p>
+
+<pre><code class="language-HTML">&lt;script src="js/jquery.min.js"&gt;&lt;/script&gt; &lt;!-- optional --&gt;
+&lt;script src="js/geopattern.min.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>Use either the <code class="language-plaintext highlighter-rouge">GeoPattern</code> browser global or the jQuery plugin:</p>
+
+<pre><code class="language-JavaScript">// Use the global...
+var pattern = GeoPattern.generate('GitHub');
+$('#geopattern').css('background-image', pattern.toDataUrl());
+
+// ...or the plugin
+$('#geopattern').geopattern('GitHub');
+</code></pre>
+
+<p>For backwards compatibility with the script on the <a href="http://guides.github.com/">Guides</a>, the source hash for generation can be supplied with a <code class="language-plaintext highlighter-rouge">data-title-sha</code> attribute on the element. If the attribute exists, the generator will ignore the input string and use the supplied hash.</p>
+
+<p>View <a href="/pages/Protonull/SouthshireGov2017/bower_components/geopattern/geopattern.html"><code class="language-plaintext highlighter-rouge">geopattern.html</code></a> for a complete example.</p>
+
+<h3 id="nodejs">Node.js</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>geopattern
+</code></pre></div></div>
+
+<p>After requiring <code class="language-plaintext highlighter-rouge">geopattern</code>, the API is identical to the browser version, minus the jQuery plugin.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">GeoPattern</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">geopattern</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">pattern</span> <span class="o">=</span> <span class="nx">GeoPattern</span><span class="p">.</span><span class="nx">generate</span><span class="p">(</span><span class="dl">'</span><span class="s1">GitHub</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">pattern</span><span class="p">.</span><span class="nx">toDataUrl</span><span class="p">();</span> <span class="c1">// url("data:image/svg+xml;...</span>
+</code></pre></div></div>
+
+<h3 id="api">API</h3>
+
+<h4 id="geopatterngeneratestring-options">GeoPattern.generate(string, options)</h4>
+
+<p>Returns a newly-generated, tiling SVG Pattern.</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">string</code> Will be hashed using the SHA1 algorithm, and the resulting hash will be used as the seed for generation.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">options.color</code> Specify an exact background color. This is a CSS hexadecimal color value.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">options.baseColor</code> Controls the relative background color of the generated image. The color is not identical to that used in the pattern because the hue is rotated by the generator. This is a CSS hexadecimal color value, which defaults to <code class="language-plaintext highlighter-rouge">#933c3c</code>.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">options.generator</code> Determines the pattern. <a href="https://github.com/jasonlong/geo_pattern#available-patterns">All of the original patterns</a> are available in this port, and their names are camelCased.</p>
+  </li>
+</ul>
+
+<h4 id="patterncolor">Pattern.color</h4>
+
+<p>Gets the pattern’s background color as a hexadecimal string.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">GeoPattern</span><span class="p">.</span><span class="nx">generate</span><span class="p">(</span><span class="dl">'</span><span class="s1">GitHub</span><span class="dl">'</span><span class="p">).</span><span class="nx">color</span> <span class="c1">// =&gt; "#455e8a"</span>
+</code></pre></div></div>
+
+<h4 id="patterntostring-and-patterntosvg">Pattern.toString() and Pattern.toSvg()</h4>
+
+<p>Gets the SVG string representing the pattern.</p>
+
+<h4 id="patterntobase64">Pattern.toBase64()</h4>
+
+<p>Gets the SVG as a Base64-encoded string.</p>
+
+<h4 id="patterntodatauri">Pattern.toDataUri()</h4>
+
+<p>Gets the pattern as a data URI, i.e. <code class="language-plaintext highlighter-rouge">data:image/svg+xml;base64,PHN2ZyB...</code>.</p>
+
+<h4 id="patterntodataurl">Pattern.toDataUrl()</h4>
+
+<p>Gets the pattern as a data URL suitable for use as a CSS <code class="language-plaintext highlighter-rouge">background-image</code>, i.e. <code class="language-plaintext highlighter-rouge">url("data:image/svg+xml;base64,PHN2ZyB...")</code>.</p>
+
+<h2 id="license">License</h2>
+
+<p>Licensed under the terms of the MIT License, the full text of which can be read in <a href="/pages/Protonull/SouthshireGov2017/bower_components/geopattern/LICENSE">LICENSE</a>.</p>
+
+        </div>
+
+    <footer class="container">
+
+    <div class="site-footer">
+
+        <div class="copyright pull-left">
+            <!-- 请不要更改这一行 方便其他人知道模板的来源 谢谢 -->
+            <!-- Please keep this line to let others know where this theme comes from. Thank you :D -->
+            Power by <a href="https://github.com/DONGChuan/Yummy-Jekyll">Yummy Jekyll</a>
+        </div>
+
+        <a href="https://github.com/DONGChuan" target="_blank" aria-label="view source code">
+            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+        </a>
+
+        <div class="pull-right">
+            <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+        </div>
+
+    </div>
+
+    <!-- Third-Party JS -->
+    <script type="text/javascript" src="/bower_components/geopattern/js/geopattern.min.js"></script>
+
+    <!-- My JS -->
+    <script type="text/javascript" src="/assets/js/script.js"></script>
+
+    
+
+    
+
+</footer>
+
+
+    </body>
+
+</html>

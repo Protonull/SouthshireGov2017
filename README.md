@@ -1,0 +1,3 @@
+# Government of Southshire
+
+This was an attempt to collate all the laws of Southshire into one easily reference-able place. This was the final version of a series of attempts, the first of which were hilariously utilitarian, [like so](http://bettermotherfuckingwebsite.com/) (explicit), so this was an attempt to make the site more *aesthetic.* It ended up being abandoned however when Southshire discarded pretty much every codification in favour of a more casual Council affair... what has more recently been dubbed the Eddieocracy.

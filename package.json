@@ -1,0 +1,11 @@
+{
+  "name": "southshiregov2017",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "bowerinstall": "npx bower install https://raw.githubusercontent.com/DONGChuan/Yummy-Jekyll/master/bower.json"
+  },
+  "dependencies": {
+    "bower": "^1.8.14"
+  }
+}
